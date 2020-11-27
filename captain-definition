@@ -6,7 +6,7 @@
     "RUN apk update && apk upgrade && apk add zlib jpeg-dev zlib-dev make g++ bash git openssh postgresql-dev curl",
     "RUN mkdir -p /usr/src/app",
     "WORKDIR /usr/src/app",
-    "COPY ./imageAPI/ /usr/src/app",
+    "COPY ./project/ /usr/src/app",
     "RUN pip install -r requirements.txt",
     "COPY ./utils/ /usr/src/utils",
     "CMD sh /usr/src/utils/run.sh"
