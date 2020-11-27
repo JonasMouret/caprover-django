@@ -90,7 +90,6 @@ class PhotoList(APIView):
                 for id in ids:
                     try:
                         image = ImageBelier.objects.get(id=id)
-                        print('yes')
                         image.delete()
                     except:
                         image = None

@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     'API',
     'corsheaders',
-    "API.apps.MyAppConfig",
+    "API.apps.BelierApiConfig",
 ]
 
 MIDDLEWARE = [
@@ -155,5 +155,4 @@ except ImportError:
 if os.environ.get("CAPROVER") is None:
     from .settings_dev import *
 else:
-    print ('NO CAPROVER ARG SET')
     from .settings_caprover import *
