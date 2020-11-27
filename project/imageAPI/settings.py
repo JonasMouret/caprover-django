@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-import dj_database_url 
-import environ
+# import dj_database_url 
+# import environ
 
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
+# env = environ.Env()
+# # reading .env file
+# environ.Env.read_env()
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 # SECRET_KEY = env("SECRET_KEY", default="@sfz%1**!9_q#9%_!jq+qsdqsdxqsdqz@83xs5pn&fku23eqh27%")
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     'API',
     'corsheaders',
+    "API.apps.MyAppConfig",
 ]
 
 MIDDLEWARE = [
@@ -152,7 +153,7 @@ except ImportError:
     pass
 
 if os.environ.get("CAPROVER") is None:
-    print ('NO CAPROVER ARG SET')
     from .settings_dev import *
 else:
+    print ('NO CAPROVER ARG SET')
     from .settings_caprover import *
