@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "rest_framework.authtoken",
-    'API',
+    # 'API',
     'corsheaders',
     "API.apps.BelierApiConfig",
 ]
