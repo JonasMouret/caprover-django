@@ -11,6 +11,6 @@ from rest_framework import serializers
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ImageBelier
-        fields = ('id', 'title', 'image', 'image_url', 'category', 'image_64')
+        fields = ('id', 'title', 'image', 'category', 'image_64')
 
 
