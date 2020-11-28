@@ -35,28 +35,29 @@ import environ
 from django.core.files import File
 from django.core.files.storage import default_storage
 
-if os.environ.get("CAPROVER") :
-    env = environ.Env()
-    # reading .env file
-    environ.Env.read_env()
+# if os.environ.get("CAPROVER") :
+#     env = environ.Env()
+#     # reading .env file
+#     environ.Env.read_env()
 
 class PhotoList(APIView):
 
     permission_classes = (permissions.AllowAny,)
     parser_classes = (MultiPartParser, FormParser)
-    http_method_names = ['get', 'head', 'post']
+    http_method_names = ['get', 'head', 'post', 'delete']
     
     def get(self, request, *args, **kwargs):
         image = ImageBelier.objects.all()
         path_media = os.path.exists(settings.MEDIA_ROOT)
         if path_media == False:
             os.makedirs(settings.MEDIA_ROOT + '/photos/')
-        for img in image:
-            with open(img.image.path, 'wb') as f:
-                myfile = File(f)
-                myfile.write(base64.b64decode(str(img.image_64)))
-                myfile.close()
-                f.close()
+            for img in image:
+                if img.image_64 is None:
+                    with open(img.image.path, 'wb') as f:
+                        myfile = File(f)
+                        myfile.write(base64.b64decode(str(img.image_64)))
+                        myfile.close()
+                        f.close()
 
         serializer = PhotoSerializer(image, many=True, context={"request":request}) 
         return Response(serializer.data, status=status.HTTP_200_OK)
