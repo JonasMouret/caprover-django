@@ -35,10 +35,10 @@ import environ
 from django.core.files import File
 from django.core.files.storage import default_storage
 
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
-
+if os.environ.get("CAPROVER") :
+    env = environ.Env()
+    # reading .env file
+    environ.Env.read_env()
 
 class PhotoList(APIView):
 
