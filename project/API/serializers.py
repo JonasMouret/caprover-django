@@ -9,13 +9,8 @@ from rest_framework import serializers
 
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
-    image = serializers.ImageField(
-            max_length=None, use_url=True
-        )
     class Meta:
         model = ImageBelier
-        fields = ('id', 'title', 'image', 'category', 'image_64')
+        fields = ('id', 'title', 'image', 'image_url', 'category', 'image_64')
 
-    def get_image_url(self, obj):
-        return obj.image.url
 
