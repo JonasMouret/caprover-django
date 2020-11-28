@@ -9,6 +9,7 @@ from .settings import BASE_DIR
 # key and debugging settings should not changed without care
 SECRET_KEY = os.environ.get("CR_SECRET_KEY") or ImproperlyConfigured("CR_SECRET_KEY not set")
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEBUG = False
 
