@@ -65,7 +65,7 @@ class PhotoList(APIView):
     def post(self, request, *args, **kwargs):
         image_serializer = PhotoSerializer(data=request.data)
         if request.method == "POST":
-            if request.POST.get('token') == "bvfd6g41365fdgbvdf68g43211cbv65fdgbxvcddsfsdcsddc":
+            if request.POST.get('token') == env('TOKEN'):
                 if image_serializer.is_valid():
                     image_serializer.save()
                     modelImageBelier = ImageBelier.objects.last()
@@ -84,7 +84,7 @@ class PhotoList(APIView):
 
     def delete(self, request, *args, **kwargs):
         if request.method == 'DELETE':
-            if request.POST.get('token') == "bvfd6g41365fdgbvdf68g43211cbv65fdgbxvcddsfsdcsddc":
+            if request.POST.get('token') == env('TOKEN'):
                 image = ImageBelier.objects.all()
                 ids = dict(request.GET)
                 ids = ids.pop('id')
