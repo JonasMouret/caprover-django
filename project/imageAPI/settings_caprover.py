@@ -11,7 +11,6 @@ SECRET_KEY = os.environ.get("CR_SECRET_KEY") or ImproperlyConfigured("CR_SECRET_
 
 
 DEBUG = False
-SECURE_SSL_REDIRECT = True
 
 # allowed hosts get parsed from a comma-separated list
 hosts = os.environ.get("CR_HOSTS") or ImproperlyConfigured("CR_HOSTS not set")
