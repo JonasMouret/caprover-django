@@ -4,10 +4,15 @@ from PIL import Image
 import os
 import base64
 
+def upload_location(instance, filename):
+    filebase, extension = filename.split('.')
+    extension = 'jpg'
+    return 'photos/%s.%s' % (filebase, extension)
+
 class ImageBelier (models.Model):
     title = models.CharField(max_length=200)
 
-    image = models.FileField(upload_to='photos', max_length=254, blank=True, null=True)
+    image = models.FileField(upload_to=upload_location, max_length=254, blank=True, null=True)
 
     category = models.CharField(
         max_length=200,
