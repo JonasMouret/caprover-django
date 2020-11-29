@@ -1,6 +1,5 @@
-
-from django.urls import path
 from . import views
+from django.urls import path
 
 urlpatterns = [
     path('images/', views.PhotoList.as_view(), name= 'Photo-List'),
