@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -49,12 +47,16 @@ TEMPLATES = [
     },
 ]
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/staticfiles/'
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 os.makedirs(STATIC_ROOT, exist_ok=True)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 WSGI_APPLICATION = 'imageAPI.wsgi.application'
 
@@ -95,8 +97,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 try:
     from .local_settings import *

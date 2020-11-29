@@ -25,6 +25,8 @@ from API.serializers import PhotoSerializer
 
 if os.environ.get("CAPROVER"):
     token = os.environ.get("TOKEN")
+else :
+    token = "fdgvscvfdgerdg54651"
 
 class PhotoList(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -37,12 +39,11 @@ class PhotoList(APIView):
         if path_media == False:
             os.makedirs(settings.MEDIA_ROOT + '/photos/')
             for img in image:
-                if img.image_64 is None:
-                    with open(img.image.path, 'wb') as f:
-                        myfile = File(f)
-                        myfile.write(base64.b64decode(str(img.image_64)))
-                        myfile.close()
-                        f.close()
+                with open(img.image.path, 'wb') as f:
+                    myfile = File(f)
+                    myfile.write(base64.b64decode(str(img.image_64)))
+                    myfile.close()
+                    f.close()
         serializer = PhotoSerializer(image, many=True, context={"request":request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
