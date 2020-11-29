@@ -92,10 +92,9 @@ class PhotoList(APIView):
                     try:
                         image = ImageBelier.objects.get(id=id)
                         image.delete()
-                        return HttpResponse('DELETED', status=204)
-                    except:
-                        image = None
-                        return HttpResponse('NOT FOUND', status=404)
+                    except image.DoesNotExist:
+                        raise Http404("Image does not exist")
+                    return HttpResponse('DELETED', status=204)
                 
             else:
                 return HttpResponse('UNAUTHORIZED', status=401)
