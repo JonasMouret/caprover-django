@@ -30,4 +30,4 @@ sqlparse==0.4.1
 tinyocr==0.2.3
 traitlets==5.0.5
 wcwidth==0.2.5
-whitenoise==5.2.0
+whitenoise==3.2.1
